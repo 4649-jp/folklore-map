@@ -1,0 +1,168 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Spot {
+  id            String            @id @default(cuid())
+  title         String
+  description   String
+  lat           Float
+  lng           Float
+  icon_type     IconType          @default(GENERIC)
+  era_hint      String?
+  status        SpotStatus        @default(DRAFT)
+  created_by    String
+  created_at    DateTime          @default(now())
+  updated_at    DateTime          @updatedAt
+  address       String?
+  maps_query    String?
+  maps_place_id String?
+  flags         Flag[]
+  sources       Source[]
+  views         SpotView[]
+  interactions  SpotInteraction[]
+
+  @@index([status, updated_at])
+  @@index([created_at])
+}
+
+model Source {
+  id       String     @id @default(cuid())
+  spot_id  String
+  type     SourceType
+  citation String
+  url      String?
+  spot     Spot       @relation(fields: [spot_id], references: [id], onDelete: Cascade)
+
+  @@index([spot_id])
+}
+
+model Flag {
+  id         String     @id @default(cuid())
+  spot_id    String
+  reason     FlagReason
+  note       String?
+  created_by String
+  status     FlagStatus @default(OPEN)
+  created_at DateTime   @default(now())
+  spot       Spot       @relation(fields: [spot_id], references: [id], onDelete: Cascade)
+
+  @@index([spot_id])
+}
+
+model Audit {
+  id          String   @id @default(cuid())
+  entity      String
+  entity_id   String
+  action      String
+  detail_json Json?
+  by          String
+  at          DateTime @default(now())
+
+  @@index([entity, entity_id])
+  @@index([at])
+}
+
+model SearchLog {
+  id             String   @id @default(cuid())
+  keyword        String?
+  icon_types     String?
+  era            String?
+  status         String?
+  user_id        String?
+  session_id     String?
+  results_count  Int      @default(0)
+  searched_at    DateTime @default(now())
+
+  @@index([searched_at])
+  @@index([keyword])
+}
+
+model SpotView {
+  id          String   @id @default(cuid())
+  spot_id     String
+  user_id     String?
+  session_id  String?
+  duration_ms Int?
+  viewed_at   DateTime @default(now())
+  spot        Spot     @relation(fields: [spot_id], references: [id], onDelete: Cascade)
+
+  @@index([spot_id])
+  @@index([viewed_at])
+}
+
+model SpotInteraction {
+  id            String           @id @default(cuid())
+  spot_id       String
+  user_id       String?
+  session_id    String?
+  type          InteractionType
+  created_at    DateTime         @default(now())
+  spot          Spot             @relation(fields: [spot_id], references: [id], onDelete: Cascade)
+
+  @@index([spot_id])
+  @@index([type])
+  @@index([created_at])
+}
+
+enum IconType {
+  ONI
+  KITSUNE
+  DOG
+  DRAGON
+  TEMPLE
+  SHRINE
+  ANIMAL
+  GENERIC
+  TANUKI
+  RABBIT
+  OX
+  HORSE
+  BIRD
+  TENGU
+  CROW_TENGU
+  YATAGARASU
+  TURTLE
+  FISH
+  WHALE
+  UMIBOUZU
+  KAPPA
+  KAWAAKAGO
+  SUIKO
+  KODAMA
+}
+
+enum SpotStatus {
+  DRAFT
+  REVIEW
+  PUBLISHED
+}
+
+enum SourceType {
+  URL
+  BOOK
+  INTERVIEW
+}
+
+enum FlagReason {
+  INAPPROPRIATE
+  WRONG_INFO
+  DISCRIMINATION
+  PRIVACY
+}
+
+enum FlagStatus {
+  OPEN
+  CLOSED
+}
+
+enum InteractionType {
+  LIKE
+  SAVE
+  SHARE
+}

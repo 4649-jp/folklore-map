@@ -1,0 +1,69 @@
+# 環境変数（機密情報）
+.env
+.env*.local
+.envrc
+*.env
+
+# Next.js
+folklore-map/.next/
+folklore-map/out/
+folklore-map/build/
+folklore-map/dist/
+
+# 依存関係
+node_modules/
+folklore-map/node_modules/
+.pnp
+.pnp.js
+
+# テスト
+coverage/
+.nyc_output/
+
+# キャッシュ
+.turbo/
+.cache/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+*~
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-*
+
+# Prisma
+folklore-map/prisma/*.db
+folklore-map/prisma/*.db-journal
+
+# Supabase
+.supabase/
+supabase/.branches/
+supabase/.temp/
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# ビルド成果物
+*.tsbuildinfo
+next-env.d.ts
+
+# テスト一時ファイル
+/tmp/
+/temp/
+*.tmp
+
+# バックアップ
+*.backup
+*.bak
+*.old

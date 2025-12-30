@@ -1,0 +1,53 @@
+[
+  {
+    "title": "津和野稲成の狐火",
+    "address": "島根県鹿足郡津和野町後田",
+    "search_url": "https://www.google.com/maps/search/?api=1&query=%E6%B4%A5%E5%92%8C%E9%87%8E%E3%80%80%E7%A8%BB%E6%88%90",
+    "lat": 34.4627,
+    "lng": 131.7695,
+    "blur_radius_m": 200,
+    "icon_type": "KITSUNE",
+    "description": "津和野稲成神社周辺では狐火が目撃されたという伝承が残る。江戸末期、稲成神社の祭礼の夜に狐火が参道を照らし、参拝者を導いたと語り継がれている。",
+    "sources": [
+      {
+        "type": "BOOK",
+        "citation": "『津和野の民話』郷土史研究会 (1978)",
+        "url": null
+      }
+    ]
+  },
+  {
+    "title": "弘前城の鬼面石",
+    "address": "青森県弘前市下白銀町",
+    "search_url": "https://www.google.com/maps/search/?api=1&query=%E5%BC%98%E5%89%8D%E5%9F%8E%20%E6%9C%9B%E3%82%80%E5%85%AC%E5%9C%92",
+    "lat": 40.6075,
+    "lng": 140.464,
+    "blur_radius_m": 300,
+    "icon_type": "ONI",
+    "description": "弘前城の天守近くに鬼の面が埋められたとされる鬼面石がある。城を建てた際に鬼の怒りを鎮めるため埋め祀ったという。",
+    "sources": [
+      {
+        "type": "URL",
+        "citation": "弘前市公式サイト『弘前城の伝説』",
+        "url": "https://www.hirosaki-kanko.or.jp/hirosakijo"
+      }
+    ]
+  },
+  {
+    "title": "多度大社の神馬伝説",
+    "address": "三重県桑名市多度町多度1681",
+    "search_url": "https://www.google.com/maps/search/?api=1&query=%E5%A4%9A%E5%BA%A6%E5%A4%A7%E7%A4%BE",
+    "lat": 35.1557,
+    "lng": 136.6386,
+    "blur_radius_m": 200,
+    "icon_type": "TEMPLE",
+    "description": "多度大社には白馬に乗った神が川を渡り人々を救ったという伝承がある。多度祭りでは神馬渡御が再現される。",
+    "sources": [
+      {
+        "type": "INTERVIEW",
+        "citation": "多度大社神職への聞き取り (2023年10月)",
+        "url": null
+      }
+    ]
+  }
+]
